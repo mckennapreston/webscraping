@@ -29,7 +29,8 @@ companies = soup.findAll("span", attrs={"class":"tv-screener__description"})
 
 print(companies)
 
-
+for company in companies[:5]:
+    print(company.text.strip())
 
 #SOME USEFUL FUNCTIONS IN BEAUTIFULSOUP
 #-----------------------------------------------#
