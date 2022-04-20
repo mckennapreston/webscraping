@@ -11,7 +11,7 @@ URL = 'https://www.livecoinwatch.com/'
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
 
-req = Request(url, headers = headers)
+req = Request(URL, headers = headers)
 
 webpage = urlopen(req).read()
 
@@ -23,6 +23,7 @@ CryptoTable = soup.find('table')
 
 CryptoRows = CryptoTable.findAll('tr')
 
+print()
 print('The Top 5 Cryptocurrency Companies')
 
 for x in range(1,6):
@@ -32,16 +33,18 @@ for x in range(1,6):
     CurrentPrice = float(td[2].text.strip('$'))
     PercentChange = float(td[8].text.strip('%'))
 
-print('Ranking:', num)
-print('Name:', name)
+    print()
+    print('Ranking:', num)
+    print('Name:', name)
 
-Current_Price = "${:,.2f}".format(CurrentPrice)
-print('Current Price:', Current_Price)
+    Current_Price = "${:,.2f}".format(CurrentPrice)
+    print('Current Price:', Current_Price)
 
-print("Percent Change:",PercentChange, "%")
-Change = round((CurrentPrice)/(1+(PercentChange/100)),2)
-ChangeFormat = "${:,.2f}".format(Change)
-print("Price based on % change:",ChangeFormat)
+    print("Percent Change:",PercentChange, "%")
+    Change = round((CurrentPrice)/(1+(PercentChange/100)),2)
+    ChangeFormat = "${:,.2f}".format(Change)
+    print("Price based on % change:", ChangeFormat)
+    print()
 
 
 AccountSID = 'AC2c3432f82ecd5ef9188c3871dc5e49ab'
